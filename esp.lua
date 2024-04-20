@@ -56,16 +56,11 @@ local function create(class, properties)
     return drawing
 end
 
-local function UpdateSettings(newSettings)
+local function UpdateESPSettings(newSettings)
     for key, value in pairs(newSettings) do
         ESP_SETTINGS[key] = value
     end
 end
-
-return {
-    UpdateSettings = UpdateSettings
-    ESP_SETTINGS = ESP_SETTINGS,
-}
 
 local function createEsp(player)
     local esp = {
@@ -137,7 +132,7 @@ local function removeEsp(player)
     if not esp then return end
 
     for _, drawing in pairs(esp) do
-        drawing.Visible = false
+        drawing:Remove()
     end
 
     cache[player] = nil
@@ -417,4 +412,9 @@ Players.PlayerRemoving:Connect(function(player)
 end)
 
 RunService.RenderStepped:Connect(updateEsp)
-return ESP_SETTINGS
+
+return {
+    UpdateESPSettings = UpdateESPSettings,
+    ESP_SETTINGS
+}
+
