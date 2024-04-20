@@ -62,6 +62,10 @@ local function UpdateSettings(newSettings)
     end
 end
 
+return {
+    UpdateSettings = UpdateSettings
+}
+
 local function createEsp(player)
     local esp = {
         tracer = create("Line", {
