@@ -64,6 +64,7 @@ end
 
 return {
     UpdateSettings = UpdateSettings
+    ESP_SETTINGS = ESP_SETTINGS,
 }
 
 local function createEsp(player)
