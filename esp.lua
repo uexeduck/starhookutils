@@ -56,6 +56,12 @@ local function create(class, properties)
     return drawing
 end
 
+local function UpdateSettings(newSettings)
+    for key, value in pairs(newSettings) do
+        ESP_SETTINGS[key] = value
+    end
+end
+
 local function createEsp(player)
     local esp = {
         tracer = create("Line", {
