@@ -132,7 +132,7 @@ local function removeEsp(player)
     if not esp then return end
 
     for _, drawing in pairs(esp) do
-        drawing:Remove()
+        drawing.Visible = false
     end
 
     cache[player] = nil
