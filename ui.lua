@@ -60,18 +60,19 @@ local sections = {}
 -- Theme Variables
 --local themes = {}
 local theme = {
-    accent = Color3.fromRGB(55, 175, 225),
-    lightcontrast = Color3.fromRGB(30, 30, 30),
-    darkcontrast = Color3.fromRGB(20, 20, 20),
-    outline = Color3.fromRGB(0, 0, 0),
-    inline = Color3.fromRGB(50, 50, 50),
-    textcolor = Color3.fromRGB(255, 255, 255),
-    textdark = Color3.fromRGB(175, 175, 175),
-    textborder = Color3.fromRGB(0, 0, 0),
-    cursoroutline = Color3.fromRGB(10, 10, 10),
-    font = 2,
-    textsize = 13
+    accent = Color3.fromRGB(153, 0, 0),  
+    lightcontrast = Color3.fromRGB(30, 30, 30), 
+    darkcontrast = Color3.fromRGB(20, 20, 20),  t
+    outline = Color3.fromRGB(0, 0, 0),  
+    inline = Color3.fromRGB(50, 50, 50),  
+    textcolor = Color3.fromRGB(255, 255, 255),   
+    textdark = Color3.fromRGB(175, 175, 175),   
+    textborder = Color3.fromRGB(0, 0, 0),   
+    cursoroutline = Color3.fromRGB(10, 10, 10),   
+    font = 2,  
+    textsize = 16   
 }
+
 -- // utility Functions
 do
     function utility:Size(xScale,xOffset,yScale,yOffset,instance)
