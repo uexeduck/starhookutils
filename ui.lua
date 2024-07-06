@@ -339,33 +339,33 @@ do
     end
     --
     function utility:LoadImage(instance, imageName, imageLink)
-    local data
-    local ImagePath = library.folders.assets .. "/" .. imageName .. ".png"
-
-    if isfile(ImagePath) then
-        data = readfile(ImagePath)
-    else
-        if imageLink then
-            local success, result = pcall(function()
-                return game:HttpGet(imageLink)
-            end)
-
-            if success then
-                data = result
-                writefile(ImagePath, data)
-                wait(1)  
-            else
-                warn("Failed to download image: " .. result)
-                return
-            end
-        else
-            warn("Invalid image?")
-            return
-        end
-    end
+	    local data
+	    local ImagePath = library.folders.assets .. "/" .. imageName .. ".png"
+	
+	    if isfile(ImagePath) then
+	        data = readfile(ImagePath)
+	    else
+	        if imageLink then
+	            local success, result = pcall(function()
+	                return game:HttpGet(imageLink)
+	            end)
+	
+	            if success then
+	                data = result
+	                writefile(ImagePath, data)
+	                wait(1)  
+	            else
+	                warn("Failed to download image: " .. result)
+	                return
+	            end
+	        else
+	            warn("Invalid image?")
+	            return
+	        end
+	    end
 
     if data then
-        instance.Image = "data:image/png;base64," .. game.HttpService:Base64Encode(data)
+        instance.Image = data
     else
         warn("Failed to load image data.")
     end
