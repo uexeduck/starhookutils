@@ -339,22 +339,36 @@ do
     end
     --
     function utility:LoadImage(instance, imageName, imageLink)
-        local data
-        --
-        if isfile(library.folders.assets.."/"..imageName..".png") then
-            data = readfile(library.folders.assets.."/"..imageName..".png")
-        else
-            if imageLink then
-                data = game:HttpGet(imageLink)
-                writefile(library.folders.assets.."/"..imageName..".png", data)
+    local data
+    local ImagePath = library.folders.assets .. "/" .. imageName .. ".png"
+
+    if isfile(ImagePath) then
+        data = readfile(ImagePath)
+    else
+        if imageLink then
+            local success, result = pcall(function()
+                return game:HttpGet(imageLink)
+            end)
+
+            if success then
+                data = result
+                writefile(ImagePath, data)
+                wait(1)  
             else
+                warn("Failed to download image: " .. result)
                 return
             end
+        else
+            warn("Invalid image?")
+            return
         end
-        --
-        if data and instance then
-            instance.Data = data
-        end
+    end
+
+    if data then
+        instance.Image = "data:image/png;base64," .. game.HttpService:Base64Encode(data)
+    else
+        warn("Failed to load image data.")
+    end
     end
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
