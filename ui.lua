@@ -6256,7 +6256,7 @@ do
         }
         --
         if transp then
-            utility:LoadImage(colorpicker__transparency, "cptransp", "https://i.imgur.com/IIPee2A.png")
+            utility:LoadImage(colorpicker__transparency, "cptransp", "https://media.discordapp.net/attachments/1258981771819749488/1258981877373603941/IIPee2A.png?ex=668a05be&is=6688b43e&hm=86bdf538b7098cab584edaa8136261375a05e44d92a9437f7c5356f5d3a9f9c3&=&format=webp&quality=lossless")
         end
         --
         function colorpicker:Set(color, transp_val)
