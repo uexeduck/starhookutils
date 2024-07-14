@@ -339,36 +339,39 @@ do
     end
     --
     function utility:LoadImage(instance, imageName, imageLink)
-	    local data
-	    local ImagePath = library.folders.assets .. "/" .. imageName .. ".png"
-	
-	    if isfile(ImagePath) then
-	        data = readfile(ImagePath)
-	    else
-	        if imageLink then
-	            local success, result = pcall(function()
-	                return game:HttpGet(imageLink)
-	            end)
-	
-	            if success then
-	                data = result
-	                writefile(ImagePath, data)
-	                wait(1)  
-	            else
-	                warn("Failed to download image: " .. result)
-	                return
-	            end
-	        else
-	            warn("Invalid image?")
-	            return
-	        end
-	    end
-
-    if data then
-        instance.Image = data
-    else
-        warn("Failed to load image data.")
-    end
+        local data
+        local ImagePath = library.folders.assets .. "/" .. imageName .. ".png"
+    
+        if isfile(ImagePath) then
+            data = readfile(ImagePath)
+        else
+            if imageLink then
+                print("Attempting to load image: " .. imageLink)
+                local success, result = pcall(function()
+                    return game:HttpGet(imageLink)
+                end)
+    
+                if success then
+                    data = result
+                    writefile(ImagePath, data)
+                    wait(1)
+                    print("Image Loaded: " .. imageLink)
+                else
+                    warn("Failed to load Image: " .. result)
+                    return
+                end
+            else
+                warn("Invalid image?")
+                return
+            end
+        end
+    
+        if data then
+            instance.Image = data
+            print("Image loaded successfully: " .. imageName)
+        else
+            warn("Failed to load image data.")
+        end
     end
     --
     function utility:Lerp(instance, instanceTo, instanceTime)
